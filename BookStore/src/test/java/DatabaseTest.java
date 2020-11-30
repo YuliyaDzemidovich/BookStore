@@ -1,5 +1,6 @@
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import javax.sql.DataSource;
@@ -10,6 +11,7 @@ import java.util.Properties;
 
 public class DatabaseTest {
     @Test
+    @Disabled
     void testMysqlConn() {
         DataSource ds = getMySQLDataSource();
         String sql = "select * from information_schema.innodb_cmp;";
