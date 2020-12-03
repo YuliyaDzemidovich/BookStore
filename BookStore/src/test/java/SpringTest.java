@@ -1,3 +1,4 @@
+import org.example.TempBean;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -5,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringTest {
     @Test
-    void getBean() {
+    void getBean() { // TODO: fix
         String shouldBe = "hello from temp bean";
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
