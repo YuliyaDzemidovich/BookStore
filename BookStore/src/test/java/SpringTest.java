@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringTest {
     @Test
-    void getBean() { // TODO: fix
+    void getBean() {
         String shouldBe = "hello from temp bean";
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");

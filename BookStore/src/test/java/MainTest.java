@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 
 class MainTest {
-    @Disabled
     @Test
     void getTestStr() {
         Main m = new Main();
