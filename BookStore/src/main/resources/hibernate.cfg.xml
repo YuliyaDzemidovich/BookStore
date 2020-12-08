@@ -9,5 +9,6 @@
         <property name="show_sql">true</property>
         <!-- List of XML mapping files -->
         <mapping class="TestObj"/>
+        <mapping class="org.example.model.Book"/>
     </session-factory>
 </hibernate-configuration>
