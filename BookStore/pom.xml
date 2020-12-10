@@ -43,7 +43,6 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/log4j/log4j -->
         <dependency>
             <groupId>log4j</groupId>
@@ -80,6 +79,21 @@
             <artifactId>javax.el</artifactId>
             <version>3.0.0</version>
         </dependency>
+        <!-- For Hibernate support in Spring -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>5.2.11.RELEASE</version>
+        </dependency>
+        <!-- For BasicDataSource import in Hibernate config -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>9.0.40</version>
+        </dependency>
+
+
 
     </dependencies>
     <build>

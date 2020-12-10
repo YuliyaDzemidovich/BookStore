@@ -9,6 +9,7 @@ import org.hibernate.query.Query;
 import org.junit.jupiter.api.*;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
@@ -30,10 +31,15 @@ public class HibernateTest {
             config.setProperty("hibernate.connection.username", props.getProperty("MYSQL_DB_USERNAME"));
             config.setProperty("hibernate.connection.password", props.getProperty("MYSQL_DB_PASSWORD"));
             config.setProperty("hibernate.connection.url", props.getProperty("MYSQL_DB_URL"));
-//            config.setProperty("hibernate.connection.driver_class", "MYSQL_DB_DRIVER_CLASS");
             factory = config.buildSessionFactory();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (fis != null) fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -38,6 +38,28 @@ public class Book {
     @Column (columnDefinition = "BLOB")
     private byte[] cover;
 
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID: ");
+        sb.append(this.id);
+        sb.append("\nBook title: ");
+        sb.append(this.title);
+        sb.append("\nAuthorId: ");
+        sb.append(this.authorId);
+        sb.append("\nPublisherId: ");
+        sb.append(this.publisherId);
+        sb.append("\nYear: ");
+        sb.append(this.year.toLocalDate().getYear());
+        sb.append("\nISBN: ");
+        sb.append(this.ISBN);
+        sb.append("\nTypeId: ");
+        sb.append(this.typeId);
+        sb.append("\nHas cover image stored? ");
+        sb.append(this.cover != null);
+        return sb.toString();
+    }
+
     public int getId() {
         return id;
     }
