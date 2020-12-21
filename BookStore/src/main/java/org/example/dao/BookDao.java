@@ -40,6 +40,57 @@ public class BookDao {
         }
     }
 
+    public boolean update(Book book) { // TODO fix
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.saveOrUpdate(book);
+            tx.commit();
+            return true;
+        } catch (Exception e){
+            if (tx != null) {
+                tx.rollback();
+            }
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+
+    public boolean deleteByISBN(final String ISBN) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Book book = findByISBN(ISBN);
+            if (book != null) {
+                session.delete(book);
+                tx.commit();
+                return true;
+            } else {
+                tx.commit();
+                return false;
+            }
+        } catch (Exception e){
+            if (tx != null) {
+                tx.rollback();
+            }
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Book findByISBN(String isbn) {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("from Book where ISBN = :isbn");
+        query.setParameter("isbn", isbn);
+        Book book = (Book) query.getSingleResult();
+        session.close();
+        return book;
+    }
+
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }

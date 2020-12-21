@@ -17,20 +17,28 @@ public class Main {
         Class<?>[] configurations = new Class<?>[] {AppConfig.class, HibernateConfig.class};
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(configurations);
 
-//        for (String s : context.getBeanDefinitionNames()) {
-//            System.out.println(s);
-//        }
-
         BookDao bookDao = (BookDao)context.getBean("bookDao");
 
-        Book book1 = new Book();
-        book1.setTitle("Alice in Wonderland");
-        book1.setAuthorId(1);
-        book1.setPublisherId(1);
-        book1.setISBN("9780099512073");
-        book1.setYear(Date.valueOf("2008-01-01"));
-        book1.setTypeId(1);
-        bookDao.create(book1);
+//        Book book1 = new Book();
+//        book1.setTitle("Enhanced Alice in Wonderland");
+//        book1.setAuthorId(1);
+//        book1.setPublisherId(1);
+//        book1.setISBN("9780099512073");
+//        book1.setYear(Date.valueOf("2008-01-01"));
+//        book1.setTypeId(1);
+//        bookDao.create(book1);
+//        bookDao.update(book1);
+
+//        Book book2 = new Book();
+//        book2.setTitle("Me in Wonderland");
+//        book2.setAuthorId(1);
+//        book2.setPublisherId(1);
+//        book2.setISBN("9780099512074");
+//        book2.setYear(Date.valueOf("2008-01-01"));
+//        book2.setTypeId(1);
+//        bookDao.create(book2);
+
+//        boolean isDeleted = bookDao.deleteByISBN("9780099512080");
 
         List<Book> books = bookDao.getBooks();
         for (Book b : books) {

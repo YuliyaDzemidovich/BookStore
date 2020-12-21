@@ -1,7 +1,6 @@
 package org.example.model;
 
 import org.apache.log4j.Logger;
-import org.example.Main;
 import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
