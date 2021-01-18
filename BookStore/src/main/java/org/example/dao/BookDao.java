@@ -62,14 +62,13 @@ public class BookDao {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {
-            tx = session.beginTransaction();
             Book book = findByISBN(ISBN);
             if (book != null) {
+                tx = session.beginTransaction();
                 session.delete(book);
                 tx.commit();
                 return true;
             } else {
-                tx.commit();
                 return false;
             }
         } catch (Exception e){
