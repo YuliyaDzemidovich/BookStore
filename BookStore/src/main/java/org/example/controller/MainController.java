@@ -15,7 +15,7 @@ public class MainController {
     @Autowired
     private BookDao bookDao;
 
-    @RequestMapping(path = "/", produces = {MediaType.TEXT_PLAIN_VALUE})
+    @RequestMapping(path = "/hello", produces = {MediaType.TEXT_PLAIN_VALUE})
     @ResponseBody
     public ResponseEntity<String> hello(){
         return new ResponseEntity<>("Hello spring", HttpStatus.OK);
@@ -24,6 +24,12 @@ public class MainController {
     @GetMapping(path = "/books", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> getAllBooks() {
         return new ResponseEntity<String>(bookDao.getBooks().toString(), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/*", produces = {MediaType.TEXT_PLAIN_VALUE})
+    @ResponseBody
+    public ResponseEntity<String> notFound(){
+        return new ResponseEntity<>("404 Page not found, but spring is here", HttpStatus.OK);
     }
 
 }
