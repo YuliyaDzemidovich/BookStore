@@ -1,5 +1,7 @@
 package org.example.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.example.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,9 @@ public class MainController {
 
     @GetMapping(path = "/books", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> getAllBooks() {
-        return new ResponseEntity<String>(bookDao.getBooks().toString(), HttpStatus.OK);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(bookDao.getBooks());
+        return new ResponseEntity<>(json, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/*", produces = {MediaType.TEXT_PLAIN_VALUE})
