@@ -34,8 +34,8 @@ public class Book {
     private String ISBN;
     @Column
     private int typeId;
-    @Lob
     @Column (columnDefinition = "BLOB")
+    @Lob
     private byte[] cover;
 
     @Override

@@ -1,5 +1,6 @@
 package org.example;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.example.config.AppConfig;
 import org.example.config.HibernateConfig;
@@ -7,13 +8,14 @@ import org.example.dao.BookDao;
 import org.example.model.Book;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.sql.Date;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class Main {
     final static Logger log = Logger.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Class<?>[] configurations = new Class<?>[] {AppConfig.class, HibernateConfig.class};
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(configurations);
 
@@ -40,10 +42,11 @@ public class Main {
 
 //        boolean isDeleted = bookDao.deleteByISBN("9780099512080");
 
-        List<Book> books = bookDao.getBooks();
-        for (Book b : books) {
-            log.info(b.toString() + "\n\n");
-        }
+//        List<Book> books = bookDao.getBooks();
+//        for (Book b : books) {
+//            log.info(b.toString() + "\n\n");
+//        }
+
     }
 
 }
