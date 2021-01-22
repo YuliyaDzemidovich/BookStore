@@ -34,9 +34,8 @@ public class Book {
     private String ISBN;
     @Column
     private int typeId;
-    @Column (columnDefinition = "BLOB")
-    @Lob
-    private byte[] cover;
+    @Column
+    private String coverUrl;
 
     @Override
     public String toString(){
@@ -56,7 +55,7 @@ public class Book {
         sb.append("\nTypeId: ");
         sb.append(this.typeId);
         sb.append("\nHas cover image stored? ");
-        sb.append(this.cover != null);
+        sb.append(this.coverUrl != null);
         return sb.toString();
     }
 
@@ -112,11 +111,11 @@ public class Book {
         this.typeId = typeId;
     }
 
-    public byte[] getCover() {
-        return cover;
+    public String getCoverUrl() {
+        return coverUrl;
     }
 
-    public void setCover(byte[] cover) {
-        this.cover = cover;
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
     }
 }

@@ -83,8 +83,27 @@ public class BookDao {
 
     public Book findByISBN(String isbn) {
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery("from Book where ISBN = :isbn");
+        Query query = session.createQuery("from Book where ISBN =:isbn");
         query.setParameter("isbn", isbn);
+        Book book = (Book) query.getSingleResult();
+        session.close();
+        return book;
+    }
+
+    /**
+     *
+     * @param id book's id of desired cover
+     * @return relative path of book cover image
+     */
+    public String getCoverUrlById(int id) {
+        Book book = getBookById(id);
+        return book.getCoverUrl();
+    }
+
+    public Book getBookById(int id) {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("from Book where id =:id");
+        query.setParameter("id", id);
         Book book = (Book) query.getSingleResult();
         session.close();
         return book;
